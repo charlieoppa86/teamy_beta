@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:teamy/components/service/study_service.dart';
 import 'package:teamy/pages/account/email_auth.dart';
 import 'package:teamy/pages/account/email_login.dart';
-import 'package:teamy/pages/test/study_status.dart';
 import 'package:teamy/theme/style.dart';
 
 class NewStudyStatus extends StatefulWidget {
@@ -72,41 +72,79 @@ class _NewStudyStatusState extends State<NewStudyStatus> {
                 },
               ),
             ]),
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(20),
-            width: double.infinity,
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              _studyName(),
-              SizedBox(
-                height: 15,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: bluishClr),
-                      onPressed: () {
-                        if (studyNameController.text.isNotEmpty) {
-                          studyService.create(
-                              studyNameController.text, user.uid);
-                          print('스터디가 등록됐습니다');
-                        }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => StudyListStatus()));
+        body: Container(
+          padding: EdgeInsets.all(20),
+          width: double.infinity,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            _studyName(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: bluishClr),
+                    onPressed: () {
+                      if (studyNameController.text.isNotEmpty) {
+                        studyService.create(studyNameController.text, user.uid);
+                        print('스터디가 등록됐습니다');
+                      }
+                    },
+                    child: Text(
+                      '스터디 등록',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    )),
+                SizedBox(
+                  height: 30,
+                )
+              ],
+            ),
+            Expanded(
+              child: FutureBuilder<QuerySnapshot>(
+                  future: studyService.read(user.uid),
+                  builder: (context, snapshot) {
+                    final docs = snapshot.data?.docs ?? [];
+                    if (docs.isEmpty) {
+                      return Center(
+                        child: Text('스터디를 만들어주세요!'),
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: docs.length,
+                      itemBuilder: (context, index) {
+                        final doc = docs[index];
+                        String study = doc.get('study');
+                        bool isDone = doc.get('isDone');
+                        return ListTile(
+                          title: Text(
+                            study,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: isDone ? Colors.grey : Colors.black,
+                              decoration: isDone
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
+                            ),
+                          ),
+                          // 삭제 아이콘 버튼
+                          trailing: IconButton(
+                            icon: Icon(CupertinoIcons.delete),
+                            onPressed: () {
+                              studyService.delete(doc.id);
+                            },
+                          ),
+                          onTap: () {
+                            studyService.update(doc.id, !isDone);
+                          },
+                        );
                       },
-                      child: Text(
-                        '스터디 등록',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                ],
-              ),
-            ]),
-          ),
+                    );
+                  }),
+            ),
+          ]),
         ),
       );
     });
