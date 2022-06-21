@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "622590982351",
+    "project_id": "teamy-e6fdb",
+    "storage_bucket": "teamy-e6fdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622590982351:android:ebc9bed13a8230c1531fba",
+        "android_client_info": {
+          "package_name": "com.wiillus.teamy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622590982351-tvbp7qngi3ca24sln08o028i3ku4mq9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzPUsd7Te-2kzCF3S1w8g-D07ZxljIU6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622590982351-tvbp7qngi3ca24sln08o028i3ku4mq9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
