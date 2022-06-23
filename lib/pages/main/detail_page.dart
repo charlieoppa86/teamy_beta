@@ -17,6 +17,7 @@ class _DetailPageState extends State<DetailPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   late Size size;
   bool isMyFavorite = false;
+  int favoriteItemCount = 0;
 
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _DetailPageState extends State<DetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.studyData["channel"]!,
+                widget.studyData["name"]!,
                 style: TextStyle(
                     fontSize: 24,
                     letterSpacing: -1,
@@ -320,13 +321,19 @@ class _DetailPageState extends State<DetailPage> {
         GestureDetector(
             onTap: () {
               setState(() {
-                isMyFavorite = !isMyFavorite;
-                Get.snackbar(
-                  widget.studyData["channel"]!,
-                  "보관함에 추가되었어요!",
-                  snackPosition: SnackPosition.BOTTOM,
-                  duration: Duration(seconds: 2),
-                );
+                if (isMyFavorite) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text('즐겨찾기를 삭제됐습니다')));
+                  favoriteItemCount -= 1;
+                  isMyFavorite = false;
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text('즐겨찾기에 추가됐습니다')));
+                  favoriteItemCount += 1;
+                  isMyFavorite = true;
+                }
               });
             },
             child: isMyFavorite

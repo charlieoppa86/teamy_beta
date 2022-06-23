@@ -26,23 +26,23 @@ class _FavorPageState extends State<FavorPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 25, 20, 15),
-        child: Container(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '즐겨찾기',
-                    style: TextStyle(
-                        fontSize: 26,
-                        letterSpacing: -2,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '즐겨찾기',
+              style: TextStyle(
+                  fontSize: 24, letterSpacing: -2, fontWeight: FontWeight.bold),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Container();
+                },
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

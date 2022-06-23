@@ -357,8 +357,18 @@ class _NewStudyPageState extends State<NewStudyPage> {
     );
   }
 
-  final textController1 = TextEditingController(text: '');
-  final textController2 = TextEditingController(text: '');
+  // 이미지들, 라디오버튼 형식의 데이터를 어떻게 넘길 수 있나
+
+  final studyNameController = TextEditingController(text: '');
+  final studyMinDesc = TextEditingController(text: '');
+  final studyCategory = TextEditingController(text: '');
+  final studyLocation = TextEditingController(text: '');
+  final studyPrice = TextEditingController(text: '');
+  final studyMaxDesc = TextEditingController(text: '');
+  final studyLeader = TextEditingController(text: '');
+  final studyLeadIntro = TextEditingController(text: '');
+  final studySubmit = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -386,7 +396,7 @@ class _NewStudyPageState extends State<NewStudyPage> {
                     Text(
                       '새 스터디',
                       style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 24,
                           letterSpacing: -2,
                           fontWeight: FontWeight.bold),
                     ),
@@ -450,7 +460,7 @@ class _NewStudyPageState extends State<NewStudyPage> {
                       height: 10,
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      height: 70,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -462,12 +472,6 @@ class _NewStudyPageState extends State<NewStudyPage> {
                                 '스터디 등록',
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                          TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                '스터디 삭제',
-                                style: TextStyle(color: Colors.red),
                               )),
                         ],
                       ),

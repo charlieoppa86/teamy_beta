@@ -6,7 +6,6 @@ import 'package:teamy/components/service/study_service.dart';
 import 'package:teamy/firebase_options.dart';
 import 'package:teamy/pages/account/email_auth.dart';
 import 'package:teamy/pages/account/email_login.dart';
-import 'package:teamy/pages/main/new_study.dart';
 import 'package:teamy/pages/test/new_study_status.dart';
 import 'package:teamy/theme/style.dart' as style;
 

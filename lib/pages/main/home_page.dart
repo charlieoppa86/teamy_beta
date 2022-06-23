@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              studyOffline[index]["channel"]!,
+                              studyOffline[index]["name"]!,
                               style: TextStyle(
                                   letterSpacing: -1,
                                   fontSize: 20,
@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              studyOnline[index]["channel"]!,
+                              studyOnline[index]["name"]!,
                               style: TextStyle(
                                   letterSpacing: -1,
                                   fontSize: 20,

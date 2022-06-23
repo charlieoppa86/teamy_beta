@@ -35,7 +35,7 @@ class _ManagePageState extends State<ManagePage> {
                   Text(
                     '스터디 관리',
                     style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 24,
                         letterSpacing: -2,
                         fontWeight: FontWeight.bold),
                   ),
