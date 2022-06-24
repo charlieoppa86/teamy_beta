@@ -381,7 +381,7 @@ class _NewStudyPageState extends State<NewStudyPage> {
               title: Image.asset(
                 'assets/logo.png',
                 fit: BoxFit.cover,
-                height: 33,
+                height: 25,
               ),
               actions: [],
               elevation: 0,

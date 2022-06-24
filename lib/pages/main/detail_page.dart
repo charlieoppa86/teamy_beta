@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:teamy/components/widget/favor_btn.dart';
 import 'package:teamy/theme/style.dart';
-import 'package:teamy/utils/currency.dart';
+import 'package:teamy/components/utils/currency.dart';
 
 class DetailPage extends StatefulWidget {
   Map<String, String> studyData;

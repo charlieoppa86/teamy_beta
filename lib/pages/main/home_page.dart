@@ -5,7 +5,7 @@ import 'package:teamy/database/study_map.dart';
 import 'package:teamy/pages/main/detail_page.dart';
 import 'package:teamy/pages/main/my_page.dart';
 import 'package:teamy/theme/style.dart';
-import 'package:teamy/utils/currency.dart';
+import 'package:teamy/components/utils/currency.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -313,7 +313,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         title: Image.asset(
           'assets/logo.png',
           fit: BoxFit.cover,
-          height: 33,
+          height: 25,
         ),
         actions: [
           Padding(

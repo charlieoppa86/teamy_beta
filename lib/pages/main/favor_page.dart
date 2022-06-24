@@ -19,7 +19,7 @@ class _FavorPageState extends State<FavorPage> {
         title: Image.asset(
           'assets/logo.png',
           fit: BoxFit.cover,
-          height: 33,
+          height: 25,
         ),
         actions: [],
         elevation: 0,
